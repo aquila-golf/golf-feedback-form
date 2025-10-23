@@ -206,6 +206,23 @@
         .star.active {
             color: #ffd700;
         }
+
+        .hotelstars {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .hotelstar {
+            font-size: 2em;
+            cursor: pointer;
+            color: #ddd;
+            transition: color 0.2s;
+        }
+        
+        .hotelstar:hover,
+        .hotelstar.active {
+            color: #ffd700;
+        }
         
         .info-box {
             background: #fff3cd;
@@ -488,48 +505,48 @@
                     
                     <div class="hotel-rating">
                         <div class="hotel-name">Dakota Hotel – Edinburgh</div>
-                        <div class="stars" data-hotel="hotel1">
-                            <span class="star" data-rating="1">★</span>
-                            <span class="star" data-rating="2">★</span>
-                            <span class="star" data-rating="3">★</span>
-                            <span class="star" data-rating="4">★</span>
-                            <span class="star" data-rating="5">★</span>
+                        <div class="hotelstars" data-hotel="hotel1">
+                            <span class="hotelstar" data-rating="1">★</span>
+                            <span class="hotelstar" data-rating="2">★</span>
+                            <span class="hotelstar" data-rating="3">★</span>
+                            <span class="hotelstar" data-rating="4">★</span>
+                            <span class="hotelstar" data-rating="5">★</span>
                         </div>
                         <input type="hidden" name="hotel1_rating" value="">
                     </div>
                     
                     <div class="hotel-rating">
                         <div class="hotel-name">Marine and Lawn Hotel – North Berwick</div>
-                        <div class="stars" data-hotel="hotel2">
-                            <span class="star" data-rating="1">★</span>
-                            <span class="star" data-rating="2">★</span>
-                            <span class="star" data-rating="3">★</span>
-                            <span class="star" data-rating="4">★</span>
-                            <span class="star" data-rating="5">★</span>
+                        <div class="hotelstars" data-hotel="hotel2">
+                            <span class="hotelstar" data-rating="1">★</span>
+                            <span class="hotelstar" data-rating="2">★</span>
+                            <span class="hotelstar" data-rating="3">★</span>
+                            <span class="hotelstar" data-rating="4">★</span>
+                            <span class="hotelstar" data-rating="5">★</span>
                         </div>
                         <input type="hidden" name="hotel2_rating" value="">
                     </div>
                     
                     <div class="hotel-rating">
                         <div class="course-name">Seaton House – Saint Andrews</div>
-                        <div class="stars" data-hotel="hotel3">
-                            <span class="star" data-rating="1">★</span>
-                            <span class="star" data-rating="2">★</span>
-                            <span class="star" data-rating="3">★</span>
-                            <span class="star" data-rating="4">★</span>
-                            <span class="star" data-rating="5">★</span>
+                        <div class="hotelstars" data-hotel="hotel3">
+                            <span class="hotelstar" data-rating="1">★</span>
+                            <span class="hotelstar" data-rating="2">★</span>
+                            <span class="hotelstar" data-rating="3">★</span>
+                            <span class="hotelstar" data-rating="4">★</span>
+                            <span class="hotelstar" data-rating="5">★</span>
                         </div>
                         <input type="hidden" name="hotel3_rating" value="">
                     </div>
                     
                     <div class="hotel-rating">
                         <div class="hotel-name">Kingsmill Hotel – Inverness</div>
-                        <div class="stars" data-hotel="hotel4">
-                            <span class="star" data-rating="1">★</span>
-                            <span class="star" data-rating="2">★</span>
-                            <span class="star" data-rating="3">★</span>
-                            <span class="star" data-rating="4">★</span>
-                            <span class="star" data-rating="5">★</span>
+                        <div class="hotelstars" data-hotel="hotel4">
+                            <span class="hotelstar" data-rating="1">★</span>
+                            <span class="hotelstar" data-rating="2">★</span>
+                            <span class="hotelstar" data-rating="3">★</span>
+                            <span class="hotelstar" data-rating="4">★</span>
+                            <span class="hotelstar" data-rating="5">★</span>
                         </div>
                         <input type="hidden" name="hotel4_rating" value="">
                     </div>
@@ -1029,17 +1046,17 @@
         });
 
         // Star rating functionality HOTELS
-        document.querySelectorAll('.stars').forEach(starsContainer => {
-            const stars = starsContainer.querySelectorAll('.star');
-            const hotelNum = starsContainer.dataset.hotel;
+        document.querySelectorAll('.hotelstars').forEach(hotelstarsContainer => {
+            const hotelstars = hotelstarsContainer.querySelectorAll('.hotelstar');
+            const hotelNum = hotelstarsContainer.dataset.hotel;
             const hiddenInput = document.querySelector(`input[name="hotel${hotelNum}_rating"]`);
             
-            stars.forEach(star => {
-                star.addEventListener('click', () => {
-                    const rating = star.dataset.rating;
+            hotelstars.forEach(hotelstar => {
+                hotelstar.addEventListener('click', () => {
+                    const rating = hotelstar.dataset.rating;
                     hiddenInput.value = rating;
                     
-                    stars.forEach(s => {
+                    hotelstars.forEach(s => {
                         if (s.dataset.rating <= rating) {
                             s.classList.add('active');
                         } else {
@@ -1048,9 +1065,9 @@
                     });
                 });
                 
-                star.addEventListener('mouseenter', () => {
-                    const rating = star.dataset.rating;
-                    stars.forEach(s => {
+                hotelstar.addEventListener('mouseenter', () => {
+                    const rating = hotelstar.dataset.rating;
+                    hotelstars.forEach(s => {
                         if (s.dataset.rating <= rating) {
                             s.style.color = '#ffd700';
                         } else {
@@ -1060,9 +1077,9 @@
                 });
             });
             
-            starsContainer.addEventListener('mouseleave', () => {
+            hotelstarsContainer.addEventListener('mouseleave', () => {
                 const currentRating = hiddenInput.value;
-                stars.forEach(s => {
+                hotelstars.forEach(s => {
                     if (currentRating && s.dataset.rating <= currentRating) {
                         s.style.color = '#ffd700';
                     } else {
@@ -1106,7 +1123,14 @@
                     document.querySelectorAll('input[type="hidden"]').forEach(input => {
                         input.value = '';
                     });
-                } else {
+                    // Reset all hotelstar ratings
+                    document.querySelectorAll('.hotelstar').forEach(hotelstar => {
+                        hotelstar.classList.remove('active');
+                        hotelstar.style.color = '#ddd';
+                    });
+                    document.querySelectorAll('input[type="hidden"]').forEach(input => {
+                        input.value = '';
+                    });                } else {
                     throw new Error('Network response was not ok');
                 }
             })
