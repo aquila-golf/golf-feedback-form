@@ -176,19 +176,6 @@
             color: #2c5f2d;
             margin-bottom: 10px;
         }
-
-        .hotel-rating {
-            margin: 15px 0;
-            padding: 15px;
-            background: #f8f9fa;
-            border-radius: 6px;
-        }
-        
-        .hotel-name {
-            font-weight: 600;
-            color: #2c5f2d;
-            margin-bottom: 10px;
-        }
         
         .stars {
             display: flex;
@@ -204,23 +191,6 @@
         
         .star:hover,
         .star.active {
-            color: #ffd700;
-        }
-
-        .hotelstars {
-            display: flex;
-            gap: 5px;
-        }
-        
-        .hotelstar {
-            font-size: 2em;
-            cursor: pointer;
-            color: #ddd;
-            transition: color 0.2s;
-        }
-        
-        .hotelstar:hover,
-        .hotelstar.active {
             color: #ffd700;
         }
         
@@ -503,52 +473,52 @@
                     <div class="question-text">Please rate each hotel:</div>
                     <p style="color: #666; margin-bottom: 15px; font-size: 0.95em;">Click the stars to rate each hotel (1-5 stars)</p>
                     
-                    <div class="hotel-rating">
-                        <div class="hotel-name">Dakota Hotel – Edinburgh</div>
-                        <div class="hotelstars" data-hotel="hotel1">
-                            <span class="hotelstar" data-rating="1">★</span>
-                            <span class="hotelstar" data-rating="2">★</span>
-                            <span class="hotelstar" data-rating="3">★</span>
-                            <span class="hotelstar" data-rating="4">★</span>
-                            <span class="hotelstar" data-rating="5">★</span>
+                    <div class="course-rating">
+                        <div class="course-name">Dakota Hotel – Edinburgh</div>
+                        <div class="stars" data-course="7">
+                            <span class="star" data-rating="1">★</span>
+                            <span class="star" data-rating="2">★</span>
+                            <span class="star" data-rating="3">★</span>
+                            <span class="star" data-rating="4">★</span>
+                            <span class="star" data-rating="5">★</span>
                         </div>
-                        <input type="hidden" name="hotel1_rating" value="">
+                        <input type="hidden" name="course7_rating" value="">
                     </div>
                     
-                    <div class="hotel-rating">
-                        <div class="hotel-name">Marine and Lawn Hotel – North Berwick</div>
-                        <div class="hotelstars" data-hotel="hotel2">
-                            <span class="hotelstar" data-rating="1">★</span>
-                            <span class="hotelstar" data-rating="2">★</span>
-                            <span class="hotelstar" data-rating="3">★</span>
-                            <span class="hotelstar" data-rating="4">★</span>
-                            <span class="hotelstar" data-rating="5">★</span>
+                    <div class="course-rating">
+                        <div class="course-name">Marine and Lawn Hotel – North Berwick</div>
+                        <div class="stars" data-course="8">
+                            <span class="star" data-rating="1">★</span>
+                            <span class="star" data-rating="2">★</span>
+                            <span class="star" data-rating="3">★</span>
+                            <span class="star" data-rating="4">★</span>
+                            <span class="star" data-rating="5">★</span>
                         </div>
-                        <input type="hidden" name="hotel2_rating" value="">
+                        <input type="hidden" name="course8_rating" value="">
                     </div>
                     
-                    <div class="hotel-rating">
+                    <div class="course-rating">
                         <div class="course-name">Seaton House – Saint Andrews</div>
-                        <div class="hotelstars" data-hotel="hotel3">
-                            <span class="hotelstar" data-rating="1">★</span>
-                            <span class="hotelstar" data-rating="2">★</span>
-                            <span class="hotelstar" data-rating="3">★</span>
-                            <span class="hotelstar" data-rating="4">★</span>
-                            <span class="hotelstar" data-rating="5">★</span>
+                        <div class="stars" data-course="9">
+                            <span class="star" data-rating="1">★</span>
+                            <span class="star" data-rating="2">★</span>
+                            <span class="star" data-rating="3">★</span>
+                            <span class="star" data-rating="4">★</span>
+                            <span class="star" data-rating="5">★</span>
                         </div>
-                        <input type="hidden" name="hotel3_rating" value="">
+                        <input type="hidden" name="course9_rating" value="">
                     </div>
                     
-                    <div class="hotel-rating">
-                        <div class="hotel-name">Kingsmill Hotel – Inverness</div>
-                        <div class="hotelstars" data-hotel="hotel4">
-                            <span class="hotelstar" data-rating="1">★</span>
-                            <span class="hotelstar" data-rating="2">★</span>
-                            <span class="hotelstar" data-rating="3">★</span>
-                            <span class="hotelstar" data-rating="4">★</span>
-                            <span class="hotelstar" data-rating="5">★</span>
+                    <div class="course-rating">
+                        <div class="course-name">Kingsmill Hotel – Inverness</div>
+                        <div class="stars" data-course="10">
+                            <span class="star" data-rating="1">★</span>
+                            <span class="star" data-rating="2">★</span>
+                            <span class="star" data-rating="3">★</span>
+                            <span class="star" data-rating="4">★</span>
+                            <span class="star" data-rating="5">★</span>
                         </div>
-                        <input type="hidden" name="hotel4_rating" value="">
+                        <input type="hidden" name="course10_rating" value="">
                     </div>
                 </div>
                 
@@ -1001,7 +971,7 @@
     </div>
     
     <script>
-        // Star rating functionality COURSES
+        // Star rating functionality
         document.querySelectorAll('.stars').forEach(starsContainer => {
             const stars = starsContainer.querySelectorAll('.star');
             const courseNum = starsContainer.dataset.course;
@@ -1044,51 +1014,6 @@
                 });
             });
         });
-
-        // Star rating functionality HOTELS
-        document.querySelectorAll('.hotelstars').forEach(hotelstarsContainer => {
-            const hotelstars = hotelstarsContainer.querySelectorAll('.hotelstar');
-            const hotelNum = hotelstarsContainer.dataset.hotel;
-            const hiddenInput = document.querySelector(`input[name="hotel${hotelNum}_rating"]`);
-            
-            hotelstars.forEach(hotelstar => {
-                hotelstar.addEventListener('click', () => {
-                    const rating = hotelstar.dataset.rating;
-                    hiddenInput.value = rating;
-                    
-                    hotelstars.forEach(s => {
-                        if (s.dataset.rating <= rating) {
-                            s.classList.add('active');
-                        } else {
-                            s.classList.remove('active');
-                        }
-                    });
-                });
-                
-                hotelstar.addEventListener('mouseenter', () => {
-                    const rating = hotelstar.dataset.rating;
-                    hotelstars.forEach(s => {
-                        if (s.dataset.rating <= rating) {
-                            s.style.color = '#ffd700';
-                        } else {
-                            s.style.color = '#ddd';
-                        }
-                    });
-                });
-            });
-            
-            hotelstarsContainer.addEventListener('mouseleave', () => {
-                const currentRating = hiddenInput.value;
-                hotelstars.forEach(s => {
-                    if (currentRating && s.dataset.rating <= currentRating) {
-                        s.style.color = '#ffd700';
-                    } else {
-                        s.style.color = '#ddd';
-                    }
-                });
-            });
-        });
-
         
         // Form submission handler
         const scriptURL = 'https://script.google.com/macros/s/AKfycbwAN40XrPmIOrlkpVBixz6b-top4ulP62qQzlMMcYcRxwXeaxOsPAf8DRjfltOl4-zl/exec'; 
@@ -1123,14 +1048,7 @@
                     document.querySelectorAll('input[type="hidden"]').forEach(input => {
                         input.value = '';
                     });
-                    // Reset all hotelstar ratings
-                    document.querySelectorAll('.hotelstar').forEach(hotelstar => {
-                        hotelstar.classList.remove('active');
-                        hotelstar.style.color = '#ddd';
-                    });
-                    document.querySelectorAll('input[type="hidden"]').forEach(input => {
-                        input.value = '';
-                    });                } else {
+                } else {
                     throw new Error('Network response was not ok');
                 }
             })
