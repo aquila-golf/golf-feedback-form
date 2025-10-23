@@ -1032,21 +1032,27 @@
             });
         });
         
-	// Fixed HStar rating functionality
-	document.querySelectorAll('.course-rating').forEach(block => {
-	  const hstarsContainer = block.querySelector('.hstars');
-	  if (!hstarsContainer) return; // skip non-hotel sections
+	// HStar rating functionality (fixed and scoped properly)
+	document.querySelectorAll('.course-rating').forEach(container => {
+	  const hstarsContainer = container.querySelector('.hstars');
+	  if (!hstarsContainer) return;
 
 	  const hstars = hstarsContainer.querySelectorAll('.hstar');
-	  const hiddenInput = block.querySelector('input[type="hidden"]');
+	  const hiddenInput = container.querySelector('input[type="hidden"]');
 
 	  hstars.forEach(hstar => {
 	    hstar.addEventListener('click', () => {
 	      const rating = hstar.dataset.rating;
-	      hiddenInput.value = rating; // ✅ always update the correct input
+	      hiddenInput.value = rating;
+
 	      hstars.forEach(s => {
-	        s.classList.toggle('active', s.dataset.rating <= rating);
-	        s.style.color = s.dataset.rating <= rating ? '#ffd700' : '#ddd';
+	        if (s.dataset.rating <= rating) {
+	          s.classList.add('active');
+	          s.style.color = '#ffd700';
+	        } else {
+	          s.classList.remove('active');
+	          s.style.color = '#ddd';
+	        }
 	      });
 	    });
 
@@ -1056,12 +1062,12 @@
 	        s.style.color = s.dataset.rating <= rating ? '#ffd700' : '#ddd';
 	      });
 	    });
+	  });
 
-	    hstarsContainer.addEventListener('mouseleave', () => {
-	      const currentRating = hiddenInput.value;
-	      hstars.forEach(s => {
-	        s.style.color = currentRating && s.dataset.rating <= currentRating ? '#ffd700' : '#ddd';
-	      });
+	  hstarsContainer.addEventListener('mouseleave', () => {
+	    const currentRating = hiddenInput.value;
+	    hstars.forEach(s => {
+	      s.style.color = currentRating && s.dataset.rating <= currentRating ? '#ffd700' : '#ddd';
 	    });
 	  });
 	});
