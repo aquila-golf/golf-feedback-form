@@ -1032,50 +1032,39 @@
             });
         });
         
-        // HStar rating functionality
-        document.querySelectorAll('.hstars').forEach(hstarsContainer => {
-            const hstars = hstarsContainer.querySelectorAll('.hstar');
-            const courseNum = hstarsContainer.dataset.course;
-            const hiddenInput = document.querySelector(`input[name="course${courseNum}_rating"]`);
-            
-            hstars.forEach(hstar => {
-                hstar.addEventListener('click', () => {
-                    const rating = hstar.dataset.rating;
-                    hiddenInput.value = rating;
-                    
-                    hstars.forEach(s => {
-                        if (s.dataset.rating <= rating) {
-                            s.classList.add('active');
-                        } else {
-                            s.classList.remove('active');
-                        }
-                    });
-                });
-                
-                hstar.addEventListener('mouseenter', () => {
-                    const rating = hstar.dataset.rating;
-                    hstars.forEach(s => {
-                        if (s.dataset.rating <= rating) {
-                            s.style.color = '#ffd700';
-                        } else {
-                            s.style.color = '#ddd';
-                        }
-                    });
-                });
-            });
-            
-            hstarsContainer.addEventListener('mouseleave', () => {
-                const currentRating = hiddenInput.value;
-                hstars.forEach(s => {
-                    if (currentRating && s.dataset.rating <= currentRating) {
-                        s.style.color = '#ffd700';
-                    } else {
-                        s.style.color = '#ddd';
-                    }
-                });
-            });
-        });
-        
+	// Fixed HStar rating functionality
+	document.querySelectorAll('.course-rating').forEach(block => {
+	  const hstarsContainer = block.querySelector('.hstars');
+	  if (!hstarsContainer) return; // skip non-hotel sections
+
+	  const hstars = hstarsContainer.querySelectorAll('.hstar');
+	  const hiddenInput = block.querySelector('input[type="hidden"]');
+
+	  hstars.forEach(hstar => {
+	    hstar.addEventListener('click', () => {
+	      const rating = hstar.dataset.rating;
+	      hiddenInput.value = rating; // ✅ always update the correct input
+	      hstars.forEach(s => {
+	        s.classList.toggle('active', s.dataset.rating <= rating);
+	        s.style.color = s.dataset.rating <= rating ? '#ffd700' : '#ddd';
+	      });
+	    });
+
+	    hstar.addEventListener('mouseenter', () => {
+	      const rating = hstar.dataset.rating;
+	      hstars.forEach(s => {
+	        s.style.color = s.dataset.rating <= rating ? '#ffd700' : '#ddd';
+	      });
+	    });
+
+	    hstarsContainer.addEventListener('mouseleave', () => {
+	      const currentRating = hiddenInput.value;
+	      hstars.forEach(s => {
+	        s.style.color = currentRating && s.dataset.rating <= currentRating ? '#ffd700' : '#ddd';
+	      });
+	    });
+	  });
+	});
         // Form submission handler
         const scriptURL = 'https://script.google.com/macros/s/AKfycbwAN40XrPmIOrlkpVBixz6b-top4ulP62qQzlMMcYcRxwXeaxOsPAf8DRjfltOl4-zl/exec'; 
         const form = document.getElementById('questionnaireForm');
