@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aquila Scottish Golf Tour Feedback Questionnaire</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c5f2d 0%, #3a7f3c 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2em;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .intro {
+            background: #f8f9fa;
+            padding: 30px;
+            border-bottom: 3px solid #2c5f2d;
+        }
+        
+        .intro p {
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .signature {
+            margin-top: 20px;
+            font-style: italic;
+            color: #555;
+        }
+        
+        .form-content {
+            padding: 40px 30px;
+        }
+        
+        .section {
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .section:last-child {
+            border-bottom: none;
+        }
+        
+        .section-title {
+            background: #2c5f2d;
+            color: white;
+            padding: 12px 20px;
+            margin: -10px -10px 25px -10px;
+            border-radius: 6px;
+            font-size: 1.3em;
+            font-weight: 600;
+        }
+        
+        .question {
+            margin-bottom: 30px;
+        }
+        
+        .question-text {
+            font-weight: 600;
+            color: #2c5f2d;
+            margin-bottom: 12px;
+            font-size: 1.05em;
+        }
+        
+        .radio-group, .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .radio-option, .checkbox-option {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .radio-option:hover, .checkbox-option:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+        
+        .radio-option input, .checkbox-option input {
+            margin-right: 10px;
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+        }
+        
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 1em;
+            resize: vertical;
+            min-height: 100px;
+            transition: border-color 0.3s;
+        }
+        
+        textarea:focus {
+            outline: none;
+            border-color: #2c5f2d;
+        }
+        
+        .rating-scale {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .rating-button {
+            padding: 10px 15px;
+            background: #f8f9fa;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .rating-button:hover {
+            background: #e9ecef;
+            transform: scale(1.05);
+        }
+        
+        .rating-button.selected {
+            background: #2c5f2d;
+            color: white;
+            border-color: #2c5f2d;
+        }
+        
+        .course-rating {
+            margin: 15px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 6px;
+        }
+        
+        .course-name {
+            font-weight: 600;
+            color: #2c5f2d;
+            margin-bottom: 10px;
+        }
+        
+        .stars {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .star {
+            font-size: 2em;
+            cursor: pointer;
+            color: #ddd;
+            transition: color 0.2s;
+        }
+        
+        .star:hover,
+        .star.active {
+            color: #ffd700;
+        }
+        
+        .info-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        
+        .submit-section {
+            text-align: center;
+            padding: 30px 0;
+        }
+        
+        .submit-button {
+            background: linear-gradient(135deg, #2c5f2d 0%, #3a7f3c 100%);
+            color: white;
+            padding: 15px 60px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(44, 95, 45, 0.3);
+        }
+        
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(44, 95, 45, 0.4);
+        }
+        
+        .table-responsive {
+            overflow-x: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background: #2c5f2d;
+            color: white;
+            font-weight: 600;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.5em;
+            }
+            
+            .form-content {
+                padding: 20px 15px;
+            }
+            
+            .rating-scale {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Aquila Scottish Golf Tour<br>Feedback Questionnaire</h1>
+        </div>
+        
+        <div class="intro">
+            <p><strong>Dear Gentlemen,</strong></p>
+            <p>Thank you for participating in our recent golf trip. As our first group, your involvement has been invaluable in helping us shape the Aquila Foundation's friend-raising and fundraising.</p>
+            <p>The Aquila Foundation is dedicated to providing churches in Scotland, England, and Wales with permanent homes. This mission is both urgent and immense, requiring us to raise over $40 million in the next five years. The golf trip was designed to let you see first-hand the work Aquila is involved in while also fostering meaningful connections—both among ourselves and with those Christian brothers and sisters who share a passion for God's work in the UK.</p>
+            <p>Your feedback has already provided crucial insights for refining our case statement, and we hope you will continue to partner with us as "friend-raisers" and even fundraisers. By connecting us with others who have a heart for this mission, you play a pivotal role in helping us reach those who can provide the resources necessary to fulfill God's calling.</p>
+            <p>Below, you'll find a short survey about your experience during the golf trip. Your feedback will help us improve these trips as we continue to engage potential supporters.</p>
+            <p>Thank you for your time, your insights, and your support of the Aquila Foundation's mission.</p>
+            <div class="signature">
+                <p>With gratitude,</p>
+                <p><strong>Steve Wright</strong><br>On behalf of the Aquila Foundation Board</p>
+            </div>
+            <div class="info-box">
+                <strong>⏱️ Please take 10-15 minutes to complete this survey.</strong>
+            </div>
+        </div>
+        
+        <form id="questionnaireForm" class="form-content" name="aquila-questionnaire">
+            <!-- Section 1 -->
+            <div class="section">
+                <h2 class="section-title">Section 1: Overall Experience</h2>
+                
+                <div class="question">
+                    <div class="question-text">Your Name (Optional)</div>
+                    <input type="text" name="participant_name" placeholder="Enter your name" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; font-family: inherit; font-size: 1em; transition: border-color 0.3s;" onfocus="this.style.borderColor='#2c5f2d'" onblur="this.style.borderColor='#ddd'">
+                </div>
+                
+                <div class="question">
+                    <div class="question-text">1. Overall, how would you rate your Scottish golf tour experience?</div>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="overall_rating" value="excellent" required>
+                            <span>Excellent</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="overall_rating" value="very_good">
+                            <span>Very Good</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="overall_rating" value="good">
+                            <span>Good</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="overall_rating" value="fair">
+                            <span>Fair</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="overall_rating" value="poor">
+                            <span>Poor</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <div class="question-text">2. How likely are you to recommend this tour to golfers who might want to partner with the Aquila Foundation?</div>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="likelihood" value="10" required>
+                            <span>Extremely likely (10)</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="likelihood" value="9">
+                            <span>Very likely (9)</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="likelihood" value="8">
+                            <span>Likely (8)</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="likelihood" value="7">
+                            <span>Somewhat likely (7)</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="likelihood" value="5-6">
+                            <span>Neutral (5-6)</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="likelihood" value="1-4">
+                            <span>Unlikely (1-4)</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <div class="question-text">3. Did the tour meet your expectations?</div>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="expectations" value="exceeded" required>
+                            <span>Exceeded expectations</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="expectations" value="met">
+                            <span>Met expectations</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="expectations" value="somewhat">
+                            <span>Somewhat met expectations</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="expectations" value="did_not">
+                            <span>Did not meet expectations</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <div class="question-text">4. What were the highlights of your tour?</div>
+                    <textarea name="highlights" placeholder="Please share the highlights of your tour experience..."></textarea>
+                </div>
+            </div>
+            
+            <!-- Section 2 -->
+            <div class="section">
+                <h2 class="section-title">Section 2: Golf Courses & Play</h2>
+                
+                <div class="question">
+                    <div class="question-text">5. Please rate each golf course you played:</div>
+                    <p style="color: #666; margin-bottom: 15px; font-size: 0.95em;">Click the stars to rate each course (1-5 stars)</p>
+                    
+                    <div class="course-rating">
+                        <div class="course-name">Bruntsfield Links Golfing Society</div>
+                        <div class="stars" data-course="1">
+                            <span class="star" data-rating="1">★</span>
+                            <span class="star" data-rating="2">★</span>
+                            <span class="star" data-rating="3">★</span>
+                            <span class="star" data-rating="4">★</span>
+                            <span class="star" data-rating="5">★</span>
+                        </div>
+                        <input type="hidden" name="course1_rating" value="">
+                    </div>
+                    
+                    <div class="course-rating">
+                        <div class="course-name">Gullane Golf Club #2</div>
+                        <div class="stars" data-course="2">
+                            <span class="star" data-rating="1">★</span>
+                            <span class="star" data-rating="2">★</span>
+                            <span class="star" data-rating="3">★</span>
+                            <span class="star" data-rating="4">★</span>
+                            <span class="star" data-rating="5">★</span>
+                        </div>
+                        <input type="hidden" name="course2_rating" value="">
+                    </div>
+                    
+                    <div class="course-rating">
+                        <div class="course-name">Kingsbarns</div>
+                        <div class="stars" data-course="3">
+                            <span class="star" data-rating="1">★</span>
+                            <span class="star" data-rating="2">★</span>
+                            <span class="star" data-rating="3">★</span>
+                            <span class="star" data-rating="4">★</span>
+                            <span class="star" data-rating="5">★</span>
+                        </div>
+                        <input type="hidden" name="course3_rating" value="">
+                    </div>
+                    
+                    <div class="course-rating">
+                        <div class="course-name">Dumbarnie Links</div>
+                        <div class="stars" data-course="4">
+                            <span class="star" data-rating="1">★</span>
+                            <span class="star" data-rating="2">★</span>
+                            <span class="star" data-rating="3">★</span>
+                            <span class="star" data-rating="4">★</span>
+                            <span class="star" data-rating="5">★</span>
+                        </div>
+                        <input type="hidden" name="course4_rating" value="">
+                    </div>
+                    
+                    <div class="course-rating">
+                        <div class="course-name">Cabot Highlands (Old Petty)</div>
+                        <div class="stars" data-course="5">
+                            <span class="star" data-rating="1">★</span>
+                            <span class="star" data-rating="2">★</span>
+                            <span class="star" data-rating="3">★</span>
+                            <span class="star" data-rating="4">★</span>
+                            <span class="star" data-rating="5">★</span>
+                        </div>
+                        <input type="hidden" name="course5_rating" value="">
+                    </div>
+                    
+                    <div class="course-rating">
+                        <div class="course-name">Cabot Highlands (Castle Stuart)</div>
+                        <div class="stars" data-course="6">
+                            <span class="star" data-rating="1">★</span>
+                            <span class="star" data-rating="2">★</span>
+                            <span class="star" data-rating="3">★</span>
+                            <span class="star" data-rating="4">★</span>
+                            <span class="star" data-rating="5">★</span>
+                        </div>
+                        <input type="hidden" name="course6_rating" value="">
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <div class="question-text">Comments on golf courses and play:</div>
+                    <textarea name="golf_comments" placeholder="Any additional comments about the golf courses..."></textarea>
+                </div>
+            </div>
+            
+            <!-- Section 3 -->
+            <div class="section">
+                <h2 class="section-title">Section 3: Accommodations</h2>
+                
+                <div class="question">
+                    <div class="question-text">Please rate each hotel:</div>
+                    <p style="color: #666; margin-bottom: 15px; font-size: 0.95em;">Click the stars to rate each hotel (1-5 stars)</p>
+                    
+                    <div class="course-rating">
+                        <div class="course-name">Dakota Hotel – Edinburgh</div>
+                        <div class="stars" data-course="hotel1">
+                            <span class="star" data-rating="1">★</span>
+                            <span class="star" data-rating="2">★</span>
+                            <span class="star" data-rating="3">★</span>
+                            <span class="star" data-rating="4">★</span>
+                            <span class="star" data-rating="5">★</span>
+                        </div>
+                        <input type="hidden" name="hotel1_rating" value="">
+                    </div>
+                    
+                    <div class="course-rating">
+                        <div class="course-name">Marine and Lawn Hotel – North Berwick</div>
+                        <div class="stars" data-course="hotel2">
+                            <span class="star" data-rating="1">★</span>
+                            <span class="star" data-rating="2">★</span>
+                            <span class="star" data-rating="3">★</span>
+                            <span class="star" data-rating="4">★</span>
+                            <span class="star" data-rating="5">★</span>
+                        </div>
+                        <input type="hidden" name="hotel2_rating" value="">
+                    </div>
+                    
+                    <div class="course-rating">
+                        <div class="course-name">Seaton House – Saint Andrews</div>
+                        <div class="stars" data-course="hotel3">
+                            <span class="star" data-rating="1">★</span>
+                            <span class="star" data-rating="2">★</span>
+                            <span class="star" data-rating="3">★</span>
+                            <span class="star" data-rating="4">★</span>
+                            <span class="star" data-rating="5">★</span>
+                        </div>
+                        <input type="hidden" name="hotel3_rating" value="">
+                    </div>
+                    
+                    <div class="course-rating">
+                        <div class="course-name">Kingsmill Hotel – Inverness</div>
+                        <div class="stars" data-course="hotel4">
+                            <span class="star" data-rating="1">★</span>
+                            <span class="star" data-rating="2">★</span>
+                            <span class="star" data-rating="3">★</span>
+                            <span class="star" data-rating="4">★</span>
+                            <span class="star" data-rating="5">★</span>
+                        </div>
+                        <input type="hidden" name="hotel4_rating" value="">
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <div class="question-text">Comments on accommodations:</div>
+                    <textarea name="accommodation_comments" placeholder="Please share your thoughts on the accommodations..."></textarea>
+                </div>
+            </div>
+            
+            <!-- Section 4 -->
+            <div class="section">
+                <h2 class="section-title">Section 4: Transportation & Logistics</h2>
+                
+                <div class="question">
+                    <div class="question-text">How would you rate the transportation provided?</div>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="transportation_rating" value="excellent" required>
+                            <span>Excellent</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="transportation_rating" value="good">
+                            <span>Good</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="transportation_rating" value="fair">
+                            <span>Fair</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="transportation_rating" value="poor">
+                            <span>Poor</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <div class="question-text">Was there adequate space for golf clubs and luggage?</div>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="space_adequate" value="more_than_adequate" required>
+                            <span>More than adequate</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="space_adequate" value="adequate">
+                            <span>Adequate</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="space_adequate" value="barely_adequate">
+                            <span>Barely adequate</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="space_adequate" value="inadequate">
+                            <span>Inadequate</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <div class="question-text">Were pick-up and drop-off times convenient?</div>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="timing_convenient" value="very_convenient" required>
+                            <span>Very convenient</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="timing_convenient" value="convenient">
+                            <span>Convenient</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="timing_convenient" value="somewhat_convenient">
+                            <span>Somewhat convenient</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="timing_convenient" value="inconvenient">
+                            <span>Inconvenient</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <div class="question-text">How would you rate the overall tour logistics and organization?</div>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="logistics_rating" value="excellent" required>
+                            <span>Excellent - seamless experience</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="logistics_rating" value="good">
+                            <span>Good - well organized</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="logistics_rating" value="fair">
+                            <span>Fair - some confusion</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="logistics_rating" value="poor">
+                            <span>Poor - disorganized</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <div class="question-text">Comments on transportation and logistics:</div>
+                    <textarea name="transportation_comments" placeholder="Any additional thoughts on transportation and logistics..."></textarea>
+                </div>
+            </div>
+            
+            <!-- Section 5 (Note: original was Section 6) -->
+            <div class="section">
+                <h2 class="section-title">Section 5: Dining & Social Activities</h2>
+                
+                <div class="question">
+                    <div class="question-text">How would you rate the dining experiences on the tour?</div>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="dining_rating" value="excellent" required>
+                            <span>Excellent</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="dining_rating" value="good">
+                            <span>Good</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="dining_rating" value="fair">
+                            <span>Fair</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="dining_rating" value="poor">
+                            <span>Poor</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <div class="question-text">Were restaurant selections appropriate and of good quality?</div>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="restaurant_quality" value="excellent" required>
+                            <span>Yes, excellent choices</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="restaurant_quality" value="mostly_good">
+                            <span>Mostly good</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="restaurant_quality" value="disappointing">
+                            <span>Some were disappointing</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="restaurant_quality" value="poor">
+                            <span>Poor selections</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <div class="question-text">Were there adequate opportunities for group socializing?</div>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="socializing" value="plenty" required>
+                            <span>Yes, plenty</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="socializing" value="adequate">
+                            <span>Adequate</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="socializing" value="more">
+                            <span>Would have liked more</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="socializing" value="too_much">
+                            <span>Too much forced socializing</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <div class="question-text">Comments on dining and social activities:</div>
+                    <textarea name="dining_comments" placeholder="Any additional thoughts on dining and social activities..."></textarea>
+                </div>
+            </div>
+            
+            <!-- Section 6 (Note: original was Section 7) -->
+            <div class="section">
+                <h2 class="section-title">Section 6: Communication & Planning</h2>
+                
+                <div class="question">
+                    <div class="question-text">How would you rate the pre-tour communication and planning?</div>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="communication_rating" value="excellent" required>
+                            <span>Excellent - all information provided clearly</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="communication_rating" value="good">
+                            <span>Good - adequate information</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="communication_rating" value="fair">
+                            <span>Fair - some confusion</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="communication_rating" value="poor">
+                            <span>Poor - inadequate information</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <div class="question-text">Were you provided with adequate information about:</div>
+                    <div class="checkbox-group" style="margin-top: 10px;">
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="info_itinerary" value="yes">
+                            <span>Daily itinerary</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="info_courses" value="yes">
+                            <span>Golf courses</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="info_accommodation" value="yes">
+                            <span>Accommodation details</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="info_transportation" value="yes">
+                            <span>Transportation arrangements</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="info_packing" value="yes">
+                            <span>What to pack</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <div class="question-text">Was the tour duration appropriate?</div>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="duration" value="perfect" required>
+                            <span>Perfect length</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="duration" value="too_long">
+                            <span>Too long</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="duration" value="too_short">
+                            <span>Too short</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Section 7 (Note: original was Section 8) -->
+            <div class="section">
+                <h2 class="section-title">Section 7: Improvement & Future Tours</h2>
+                
+                <div class="question">
+                    <div class="question-text">What could be improved about this tour?</div>
+                    <textarea name="improvements" placeholder="Please share your suggestions for improvement..."></textarea>
+                </div>
+                
+                <div class="question">
+                    <div class="question-text">What would you remove or change about the itinerary?</div>
+                    <textarea name="changes" placeholder="What would you remove or change?"></textarea>
+                </div>
+                
+                <div class="question">
+                    <div class="question-text">What would you add to future tours?</div>
+                    <textarea name="additions" placeholder="What would you add to future tours?"></textarea>
+                </div>
+                
+                <div class="question">
+                    <div class="question-text">Would you be interested in another golf tour with us?</div>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="future_interest" value="definitely_yes" required>
+                            <span>Definitely yes</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="future_interest" value="probably_yes">
+                            <span>Probably yes</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="future_interest" value="maybe">
+                            <span>Maybe</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="future_interest" value="probably_not">
+                            <span>Probably not</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="future_interest" value="definitely_not">
+                            <span>Definitely not</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <div class="question-text">If yes, which destinations would interest you?</div>
+                    <div class="checkbox-group">
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="dest_england" value="yes">
+                            <span>England</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="dest_scotland" value="yes">
+                            <span>Return to Scotland</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="dest_others" value="yes">
+                            <span>Other destinations</span>
+                        </label>
+                    </div>
+                    <div style="margin-top: 15px;">
+                        <label style="display: block; margin-bottom: 5px; font-weight: 500; color: #2c5f2d;">Please specify other destinations:</label>
+                        <input type="text" name="dest_others_specify" placeholder="e.g., Ireland, Wales, etc." style="width: 100%; padding: 10px; border: 2px solid #ddd; border-radius: 6px; font-family: inherit; font-size: 1em; transition: border-color 0.3s;" onfocus="this.style.borderColor='#2c5f2d'" onblur="this.style.borderColor='#ddd'">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Section 8 (Note: original was Section 9) -->
+            <div class="section">
+                <h2 class="section-title">Section 8: Engagement with the Aquila Team</h2>
+                
+                <div class="question">
+                    <div class="question-text">Before the tour, how much did you know about the Aquila Foundation?</div>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="prior_knowledge" value="a_lot" required>
+                            <span>A lot</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="prior_knowledge" value="some">
+                            <span>Some</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="prior_knowledge" value="little">
+                            <span>A little</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="prior_knowledge" value="nothing">
+                            <span>Nothing at all</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <div class="question-text">Was your engagement with the Aquila team helpful in understanding more?</div>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="engagement_helpful" value="very" required>
+                            <span>Very helpful</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="engagement_helpful" value="somewhat">
+                            <span>Somewhat helpful</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="engagement_helpful" value="not_very">
+                            <span>Not very helpful</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="engagement_helpful" value="not_at_all">
+                            <span>Not at all helpful</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <div class="question-text">Was the Aquila vision – to help young churches in the UK to find buildings – exciting to you?</div>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="vision_exciting" value="very" required>
+                            <span>Very exciting</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="vision_exciting" value="somewhat">
+                            <span>Somewhat exciting</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="vision_exciting" value="neutral">
+                            <span>Neutral</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="vision_exciting" value="not_very">
+                            <span>Not very exciting</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <div class="question-text">Any further comments on how we could have engaged with you better or more effectively?</div>
+                    <textarea name="engagement_comments" placeholder="Please share your thoughts..."></textarea>
+                </div>
+            </div>
+            
+            <!-- Section 9 (Note: original was Section 10) -->
+            <div class="section">
+                <h2 class="section-title">Section 9: Church Tour and Heritage</h2>
+                
+                <div class="question">
+                    <div class="question-text">Which aspects of the tour were most spiritually impactful for you?</div>
+                    <textarea name="spiritual_impact" placeholder="Please share what was most spiritually impactful..."></textarea>
+                </div>
+                
+                <div class="question">
+                    <div class="question-text">Did you find the church visits... (tick as many as apply)</div>
+                    <div class="checkbox-group">
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="church_interesting" value="yes">
+                            <span>Interesting</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="church_encouraging" value="yes">
+                            <span>Spiritually encouraging</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="church_envisioning" value="yes">
+                            <span>Envisioning</span>
+                        </label>
+                    </div>
+                    <div style="margin-top: 15px;">
+                        <label style="display: block; margin-bottom: 5px; font-weight: 500;">Other:</label>
+                        <input type="text" name="church_other" placeholder="Please specify..." style="width: 100%; padding: 10px; border: 2px solid #ddd; border-radius: 6px;">
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <div class="question-text">Any other comments on the church visits?</div>
+                    <textarea name="church_comments" placeholder="Any additional thoughts on the church visits..."></textarea>
+                </div>
+            </div>
+            
+            <!-- Section 10 (Note: original was Section 11) -->
+            <div class="section">
+                <h2 class="section-title">Section 10: Additional Comments</h2>
+                
+                <div class="question">
+                    <div class="question-text">Please share any additional comments, suggestions, or memorable moments:</div>
+                    <textarea name="additional_comments" placeholder="We'd love to hear about any memorable moments or additional feedback..." style="min-height: 150px;"></textarea>
+                </div>
+            </div>
+            
+            <div class="submit-section">
+                <button type="submit" class="submit-button">Submit Questionnaire</button>
+            </div>
+        </form>
+    </div>
+    
+    <script>
+        // Star rating functionality
+        document.querySelectorAll('.stars').forEach(starsContainer => {
+            const stars = starsContainer.querySelectorAll('.star');
+            const courseNum = starsContainer.dataset.course;
+            const hiddenInput = document.querySelector(`input[name="course${courseNum}_rating"]`);
+            
+            stars.forEach(star => {
+                star.addEventListener('click', () => {
+                    const rating = star.dataset.rating;
+                    hiddenInput.value = rating;
+                    
+                    stars.forEach(s => {
+                        if (s.dataset.rating <= rating) {
+                            s.classList.add('active');
+                        } else {
+                            s.classList.remove('active');
+                        }
+                    });
+                });
+                
+                star.addEventListener('mouseenter', () => {
+                    const rating = star.dataset.rating;
+                    stars.forEach(s => {
+                        if (s.dataset.rating <= rating) {
+                            s.style.color = '#ffd700';
+                        } else {
+                            s.style.color = '#ddd';
+                        }
+                    });
+                });
+            });
+            
+            starsContainer.addEventListener('mouseleave', () => {
+                const currentRating = hiddenInput.value;
+                stars.forEach(s => {
+                    if (currentRating && s.dataset.rating <= currentRating) {
+                        s.style.color = '#ffd700';
+                    } else {
+                        s.style.color = '#ddd';
+                    }
+                });
+            });
+        });
+        
+        // Form submission handler
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwAN40XrPmIOrlkpVBixz6b-top4ulP62qQzlMMcYcRxwXeaxOsPAf8DRjfltOl4-zl/exec'; 
+        const form = document.getElementById('questionnaireForm');
+        const submitButton = form.querySelector('.submit-button');
+        
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Disable submit button and show loading state
+            submitButton.disabled = true;
+            submitButton.textContent = 'Submitting...';
+            
+            // Collect form data
+            const formData = new FormData(form);
+            
+            // Send to Google Sheets
+            fetch(scriptURL, { 
+                method: 'POST', 
+                body: formData 
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Success message
+                    alert('✅ Thank you for completing the questionnaire!\n\nYour feedback has been successfully submitted to the Aquila Foundation team.');
+                    form.reset();
+                    // Reset all star ratings
+                    document.querySelectorAll('.star').forEach(star => {
+                        star.classList.remove('active');
+                        star.style.color = '#ddd';
+                    });
+                    document.querySelectorAll('input[type="hidden"]').forEach(input => {
+                        input.value = '';
+                    });
+                } else {
+                    throw new Error('Network response was not ok');
+                }
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                alert('❌ There was an error submitting your response.\n\nPlease try again or contact the Aquila Foundation team directly.');
+            })
+            .finally(() => {
+                // Re-enable submit button
+                submitButton.disabled = false;
+                submitButton.textContent = 'Submit Questionnaire';
+            });
+        });
+        
+        // Smooth scrolling for better UX
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
